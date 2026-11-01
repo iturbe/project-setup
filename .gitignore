@@ -1,0 +1,35 @@
+# Secrets: never commit. .env.example stays tracked.
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Half-written temporary files (atomic writes)
+.*.tmp
+*.tmp
+
+# Claude Code: local, per-machine settings stay out of git
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Run artifacts: keep summaries in reports/, raw logs out
+reports/tmp/
+*.log
+
+# Common build and dependency folders (kickoff trims this to the real stack)
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+DerivedData/
