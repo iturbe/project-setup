@@ -1,4 +1,4 @@
-# Human queue
+# Human Queue
 
 Everything that needs the owner, in one place. *(Queue mode. In iteration mode use `docs/ITERATION_PLAN.md` instead and delete this file at kickoff.)*
 
@@ -40,12 +40,12 @@ Reply:    the letter, or your own words.
 
 ---
 
-## Open items
+## Open Items
 
 (none yet)
 
 ---
 
-## Answered (applied; keep the last few for context, then delete)
+## Answered (Applied; Keep the Last Few for Context, Then Delete)
 
 (none yet)

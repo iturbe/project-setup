@@ -1,8 +1,8 @@
-# Example: the Aztlan vault
+# Example: the Aztlan Vault
 
 *The content repository behind Timeline Writer: an alternate history in which Japanese explorers, not the Spanish, reach the Aztec Empire in the 1550s. It is data, not code: hundreds of Markdown records with YAML frontmatter, plus decisions, generation runs and voice-casting tests, all versioned with git and backed up to a private repo.*
 
-**What it contributed:** the shape of an agent-friendly content store. One file per atomic record, stable ids, a stage → commit flow, Established vs Proposed, decisions as files that become rulings, world specifics in a manifest, and provenance on every generation.
+**What it contributed:** the shape of an agent-friendly content store. It has one file per atomic record, stable ids, a stage → commit flow, and Established vs Proposed. Decisions are files that become rulings, world specifics live in a manifest, and every generation records where it came from.
 
 ## Layout
 
@@ -19,7 +19,7 @@ naming.yml      retired and replaced names, checked by a lint
 world_bible.md  a short summary rebuilt from the vault, loaded by every session
 ```
 
-## A canon record
+## A Canon Record
 
 > ```yaml
 > canon_status: canon
@@ -38,7 +38,7 @@ world_bible.md  a short summary rebuilt from the vault, loaded by every session
 
 **Established** holds what the author stated; **Proposed** holds what a model made up. That separation made every later step safe.
 
-## A decision
+## A Decision
 
 > ```yaml
 > id: dec-0100
@@ -54,7 +54,7 @@ world_bible.md  a short summary rebuilt from the vault, loaded by every session
 
 Answered and applied decisions become **standing rulings**, listed in the world bible and respected by every later generation: "dec-0002 Date of first contact: First contact anchored at c. 1557 […]".
 
-## The world manifest
+## The World Manifest
 
 > ```yaml
 > # The world this vault holds. Code and shipped presets never name a world:
@@ -68,7 +68,7 @@ Answered and applied decisions become **standing rulings**, listed in the world 
 >   names, Japanese where the fusion calls for it, never Spanish. […]
 > ```
 
-## Provenance on a generation run
+## Recording Where a Generation Run Came From
 
 > ```yaml
 > id: gen-0001
@@ -87,7 +87,7 @@ Answered and applied decisions become **standing rulings**, listed in the world 
 
 Estimate and real cost side by side: the first real run is how estimates get calibrated.
 
-## Feedback recorded verbatim
+## Feedback Recorded Verbatim
 
 > ```yaml
 > - label: George · multilingual v2 · respelled

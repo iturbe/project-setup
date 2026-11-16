@@ -1,8 +1,8 @@
-# The human in the loop
+# The Human in the Loop
 
 The owner's time is the scarcest resource in the project. Everything here is about using less of it, more effectively.
 
-## Two modes (chosen at kickoff)
+## Two Modes (Chosen at Kickoff)
 
 | | **Queue mode** (Shockwave Playground) | **Iteration mode** (Battle Drill) |
 |---|---|---|
@@ -13,9 +13,9 @@ The owner's time is the scarcest resource in the project. Everything here is abo
 
 Both modes share the same rules below. A project can switch modes as a logged decision.
 
-## Rules for every item
+## Rules for Every Item
 
-1. **Batch.** Aim for one sitting per milestone (two at most). Group items by where the owner needs to be: which machine, which device, which website.
+1. **Batch.** Aim for one sitting per milestone (two at most), and group items by where the owner needs to be: which machine, device or website.
 2. **Blocking first.** Sort by what unblocks the most work.
 3. **Exact steps.** One action per numbered line. Name menus, buttons and on-screen labels exactly as they appear. Assume a first-time user of the tool.
 4. **Matching checklist.** Each check is numbered to match its step, and phrased so yes or no is unambiguous.
@@ -23,10 +23,10 @@ Both modes share the same rules below. A project can switch modes as a logged de
 6. **Who and where.** Say who runs it (the owner, or the robot with nobody touching anything) and on which device.
 7. **Numbers over impressions.** "How many seconds did it take?", "Did the wall stop you, yes or no?"
 8. **Recommendation first.** Every `DECIDE` item leads with the recommended option and its consequence.
-9. **Fold, don't scatter.** New features join the pending test run rather than getting their own item.
+9. **Fold, do not scatter.** New features join the pending test run rather than getting their own item.
 10. **Apply answers first.** At the next session start, apply the owner's answers before any new work, record them in `STATE.md`, and clear the items.
 
-## Quick in-session gate
+## Quick in-Session Gate
 
 For a check you need right now in an interactive session (wire five dropdowns, glance at one screen), print it as its own block and wait:
 
@@ -39,9 +39,9 @@ Check: [ ] 1. <observable thing, unambiguous yes/no>
 Reply with pass or fail per line, plus anything odd you noticed.
 ```
 
-Don't continue with work that depends on it. Anything that needs a publish, a console, or more than a few minutes goes in the channel instead.
+Do not continue with work that depends on it. Anything that needs a publish, a console, or more than a few minutes goes in the channel instead.
 
-## Decision rounds
+## Decision Rounds
 
 When many questions pile up (content projects especially), run them as a round:
 1. Stage 15–30 questions, grouped by how much each settles (foundations first: one answer can settle ten later questions).
@@ -49,14 +49,14 @@ When many questions pile up (content projects especially), run them as a round:
 3. Apply the answers: mechanical ones apply themselves; answers in words get the records edited.
 4. Record each answer as a ruling that every later step respects. Never ask it again.
 
-## Design questions before subjective work
+## Design Questions Before Subjective Work
 
 Ask open design questions (look, feel, ambiance, scope) **before** implementing anything subjective. In Battle Drill this moved from "build, then ask" to "ask in the iteration plan, then build" after whole iterations were spent on guesses.
 
-## Pivots get a decision record
+## Pivots Get a Decision Record
 
-For a product pivot (Tesseract's move from four paid theme packs to one "Pro" unlock with a 5-game trial), write a decision record first (why, the options, the operational checklist), confirm it answer by answer with the owner, and only then build.
+For a product pivot, write a decision record first: why, the options, and the operational checklist. Confirm it answer by answer with the owner, and only then build. Tesseract did this to move from four paid theme packs to one "Pro" unlock with a 5-game trial.
 
 ## What is always the owner's
 
-Credentials, 2FA and sudo; vendor project creation and settings; anything inside a running client or on a physical device; publishing, submissions and account settings; spending beyond the budget; scope; taste and feel; canon in creative work. See `docs/OWNER.md`.
+Credentials, 2FA and sudo. Vendor project creation and settings. Anything inside a running client or on a physical device. Publishing, submissions and account settings. Spending beyond the budget; scope; taste and feel; canon in creative work. See `docs/OWNER.md`.

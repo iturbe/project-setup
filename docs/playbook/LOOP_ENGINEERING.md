@@ -1,4 +1,4 @@
-# Loop engineering playbook
+# Loop Engineering Playbook
 
 > Read this before any long, multi-step or unattended task. It explains how to structure an agent loop, not how to answer a single prompt. `AGENTS.md` maps it onto the project; where they differ, `AGENTS.md` wins.
 
@@ -24,17 +24,17 @@ return escalate(state)
 
 Every design decision is about one line of this skeleton: what counts as `verifier`, how `record` keeps context small, how `no_progress` is detected, and which tools `execute` may use.
 
-## 2. Before starting a loop, define these five things
+## 2. Before Starting a Loop, Define These Five Things
 
-1. **A goal with a testable termination condition.** "Tests pass" is a goal. "Improve the code" is not. If you can't write a check for done, rewrite the goal until you can. **The goal must be reachable by the agent alone.** "The owner approved it" is the owner's step, listed separately.
+1. **A goal with a testable termination condition.** "Tests pass" is a goal. "Improve the code" is not. If you cannot write a check for done, rewrite the goal until you can. **The goal must be reachable by the agent alone.** "The owner approved it" is the owner's step, listed separately.
 2. **Real tools that touch the real environment:** files, terminal, test runner, build, version control. Feedback is only as honest as what produced it.
 3. **A context plan.** Long loops overflow the window. Decide up front what gets written to files (`STATE.md`, `log.md`, run reports) instead of kept in context.
 4. **Termination and escalation:** a success exit, a failure exit, a hard cap, and a no-progress check.
 5. **Error handling that separates recoverable from fatal.** A failing test is signal. A missing credential, a destructive action or an ambiguous spec is a hard stop that goes to the human.
 
-If any of the five is missing, the loop isn't ready to run unattended.
+If any of the five is missing, the loop is not ready to run unattended.
 
-## 3. Pick the simplest pattern that fits
+## 3. Pick the Simplest Pattern That Fits
 
 | Pattern | What it does | Use when |
 |---|---|---|
@@ -47,9 +47,9 @@ If any of the five is missing, the loop isn't ready to run unattended.
 
 Default bias: **a single loop with a deterministic verifier beats an elaborate multi-agent system that is hard to debug.**
 
-## 4. The three hard parts
+## 4. The Three Hard Parts
 
-### Context management
+### Context Management
 
 The context window is finite working memory; left unmanaged, quality degrades quietly as it fills ("context rot"). Countermeasures:
 - **Externalize state** to files the loop reads back on demand: `STATE.md` for status, `LESSONS_LEARNED.md` for rules, `log.md` for history, `docs/runs/` for long narratives.
@@ -58,7 +58,7 @@ The context window is finite working memory; left unmanaged, quality degrades qu
 - **Keep the always-loaded files short.** `AGENTS.md` under about 200 lines; detail moves into skills and docs that load only when needed.
 - **Collapse history** when a milestone closes.
 
-### Termination and no-progress detection
+### Termination and No-Progress Detection
 
 The most expensive bug is a loop that never stops. Stack independent exits:
 - a verifier confirming the goal is met;
@@ -67,13 +67,13 @@ The most expensive bug is a loop that never stops. Stack independent exits:
 - no-progress detection: the same error or an unchanged result 3 times in a row means stop and escalate;
 - a blocked-on-human exit: say it once, queue it, move on.
 
-### Verification as the reward signal
+### Verification As the Reward Signal
 
-- **Deterministic verification** (tests, compilers, type checkers, linters) is the gold standard. Prefer it wherever it exists, and build it where it doesn't (an in-situ harness; see `VERIFICATION.md`).
-- **LLM-as-judge** is for what can't be checked mechanically (tone, look, prose quality). Its verdict is advisory for anything high-stakes; a human gate decides.
+- **Deterministic verification** (tests, compilers, type checkers, linters) is the gold standard. Prefer it wherever it exists, and build it where it does not (an in-situ harness; see `VERIFICATION.md`).
+- **LLM-as-judge** is for what cannot be checked mechanically (tone, look, prose quality). Its verdict is advisory for anything high-stakes; a human gate decides.
 - **Never trust the agent's own report of "done."** Trust the verifier, and make sure the verifier is looking at the right files.
 
-## 5. Known failure modes
+## 5. Known Failure Modes
 
 | Failure | What it looks like | Fix |
 |---|---|---|
@@ -88,15 +88,15 @@ The most expensive bug is a loop that never stops. Stack independent exits:
 | Cost blowup | Long loops quietly burn tokens or paid calls | Budget guards, caps, cost shown before paid calls |
 | Parallel agents collide | One agent's uncommitted work overwritten | One worktree per agent; never stash |
 
-## 6. Nested loops
+## 6. Nested Loops
 
-- **Macro-loop:** one milestone. Goal = its acceptance criteria. Days to weeks.
+- **Macro-loop:** one milestone, whose goal is its acceptance criteria. It takes days to weeks.
 - **Micro-loop:** one deliverable. Goal = its own checkable condition. Minutes to hours.
 - **Iteration (optional):** a batch of micro-loops ending in one hand-off to the owner, whose reply opens the next iteration (`HUMAN_IN_THE_LOOP.md`).
 
-The macro verifier is a superset (full suite, full build, milestone checklist). The micro verifier is narrower and faster (the specific test). The persistent state file survives across micro-loops so the project doesn't re-try dead ends after every context reset.
+The macro verifier is a superset (full suite, full build, milestone checklist), while the micro verifier is narrower and faster (the specific test). The persistent state file survives across micro-loops so the project does not re-try dead ends after every context reset.
 
-## 7. Projects with more than one loop
+## 7. Projects with More Than One Loop
 
 Creative and content projects often run several loops that feed each other. Timeline Writer ran three:
 

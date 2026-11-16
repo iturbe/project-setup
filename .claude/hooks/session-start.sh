@@ -11,12 +11,12 @@ if grep -qE '\{\{[^}]+\}\}' AGENTS.md 2>/dev/null; then
 fi
 
 if [ -f STATE.md ]; then
-  echo "=== STATE.md → Resume here ==="
-  awk '/^## Resume here/{f=1; print; next} f && /^## /{exit} f' STATE.md | head -40
+  echo "=== STATE.md → Resume Here ==="
+  awk 'tolower($0) ~ /^## resume here/{f=1; print; next} f && /^## /{exit} f' STATE.md | head -40
 fi
 
 if [ -f docs/HUMAN_QUEUE.md ]; then
-  open=$(awk '/^## Open items/{f=1; next} f && /^## /{exit} f && /^### Q/{n++} END{print n+0}' docs/HUMAN_QUEUE.md)
+  open=$(awk 'tolower($0) ~ /^## open items/{f=1; next} f && /^## /{exit} f && /^### Q/{n++} END{print n+0}' docs/HUMAN_QUEUE.md)
   echo "=== Owner queue: ${open} open item(s) in docs/HUMAN_QUEUE.md ==="
 elif [ -f docs/ITERATION_PLAN.md ]; then
   open=$(grep -cE 'Decision:[[:space:]]*$' docs/ITERATION_PLAN.md)
