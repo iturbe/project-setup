@@ -1,15 +1,15 @@
-# Research notes
+# Research Notes
 
 Outside practice that shaped this seed, gathered 2026-11-01, alongside the lessons from the five earlier projects. Re-check these when the seed is revised; tools change quickly.
 
-## 1. AGENTS.md as the cross-tool entry point
+## 1. AGENTS.md As the Cross-Tool Entry Point
 
 - AGENTS.md is the de facto cross-tool instructions file. Codex, Cursor, Copilot and others read it; Claude Code reads `CLAUDE.md`, which can import it with `@AGENTS.md`. Sources report tens of thousands of public repos using it.
-- Repeated advice: be **specific and imperative** ("Use pnpm, not npm" beats "we prefer pnpm"); skip generic advice like "write clean code", because it changes nothing; keep it **short** (guides cite under 150–200 lines, and adherence drops beyond that); keep it **accurate** (actual practice, not aspiration); use **nested files** in monorepos (the nearest file wins); **test it** by asking an agent to follow it.
+- Repeated advice: give **specific commands** ("Use pnpm, not npm" beats "we prefer pnpm"), and skip generic advice like "write clean code", because it changes nothing. Keep it **short**: guides cite under 150–200 lines, and adherence drops beyond that. Keep it **accurate**, describing actual practice rather than aspiration. In a repository with several projects, use **nested files** (the nearest file wins), and **test it** by asking an agent to follow it.
 - Keep one source of truth and point other tools' files at it.
 - **Applied here:** `AGENTS.md` is canonical and kept under about 200 lines; `CLAUDE.md` is an import plus Claude-only notes; detail moved into skills and the playbook.
 
-## 2. Use the right surface for each job (Claude Code)
+## 2. Use the Right Surface for Each Job (Claude Code)
 
 - **Hooks and permissions enforce; prose only suggests.** A rule that can be a hook or a permission deny should be one, rather than a "never do X" line the model may miss.
 - **Skills hold knowledge that loads on demand.** They live at `.claude/skills/<name>/SKILL.md` with YAML frontmatter (`name`, `description`, `argument-hint`, `disable-model-invocation`, `allowed-tools`, …). The description decides when Claude loads a skill, so put the use case first. Keep each `SKILL.md` under 500 lines, with reference material in sibling files. Skill bodies cost context only when used, unlike `CLAUDE.md`, which is always loaded.
@@ -17,16 +17,16 @@ Outside practice that shaped this seed, gathered 2026-11-01, alongside the lesso
 - Hooks are configured in `settings.json`: event → matcher group → handlers. A `PreToolUse` command hook receives JSON on stdin (`tool_input.command`, `tool_input.file_path`) and blocks a call by exiting with code 2 (stderr becomes the reason). `SessionStart` (matchers `startup`, `resume`, `clear`, `compact`) can print context for the session. `${CLAUDE_PROJECT_DIR}` points at the project root.
 - **Applied here:** `.claude/settings.json` (permissions + hooks), `.claude/hooks/` (session context, a destructive-command guard), nine skills, a reviewer subagent.
 
-## 3. Harnesses for long-running agents
+## 3. Harnesses for Long-Running Agents
 
 Anthropic's "Effective harnesses for long-running agents" (Justin Young, 2025-11-26), via secondary write-ups:
 - Agents work in discrete sessions with **no memory** between them; the harness must carry state.
 - The common failure is the **one-shot trap**: trying to do too much at once, running out of context mid-change, and leaving undocumented broken code.
-- The fix is an **initializer** session (set up the environment, write a feature list, a progress file, an init script, make the first commit) followed by **incremental** coding sessions that each make progress, commit, and update the progress file.
-- The feature list was kept as **JSON** because models are less likely to casually corrupt it than Markdown, and agents could only flip the pass/fail field, never delete or rewrite tests.
-- **Applied here:** `/kickoff` is the initializer; `/next` is one increment; `STATE.md` + `log.md` are the progress file; `scripts/verify.sh` is the init-and-test script; the hard stop on weakening tests and the optional `docs/acceptance.json` (`VERIFICATION.md`) mirror the feature-list rule.
+- The fix is an **initializer** session that sets up the environment, writes a feature list, a progress file and an init script, and makes the first commit. **Incremental** coding sessions follow, and each one makes progress, commits, and updates the progress file.
+- The feature list was kept as **JSON** because models are less likely to casually corrupt it than Markdown. Agents could only flip the pass/fail field, never delete or rewrite tests.
+- **Applied here:** `/kickoff` is the initializer, `/next` is one increment, `STATE.md` + `log.md` are the progress file, and `scripts/verify.sh` is the init-and-test script. The hard stop on weakening tests and the optional `docs/acceptance.json` (`VERIFICATION.md`) mirror the feature-list rule.
 
-## 4. Context engineering
+## 4. Context Engineering
 
 - Context is finite working memory, and quality degrades as it fills. Externalize state, read narrowly, isolate sub-tasks, keep always-loaded instructions short. (Consistent across the sources above, and the main reason `STATE.md` must stay navigable.)
 

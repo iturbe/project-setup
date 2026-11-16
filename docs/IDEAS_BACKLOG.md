@@ -1,4 +1,4 @@
-# Ideas backlog
+# Ideas Backlog
 
 Unscheduled. Nothing here is a commitment. When a milestone opens, pull items into `ROADMAP.md` as a logged decision, and spike anything that depends on an untested platform capability.
 

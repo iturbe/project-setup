@@ -2,9 +2,9 @@
 
 *A Fortnite creator island built in UEFN with Verse. It teaches squads of 2–4 players real small-unit tactics in missions of five minutes or less. The owner was new to UEFN and Verse; Claude did all the code and most of the editor work through Epic's MCP server, and the owner tested on a PS5.*
 
-**What it contributed:** the loop protocol (macro = milestone, micro = deliverable, 5 attempts, 3-strike no-progress rule), the L0–L3 verifier ladder, the in-game AutoTest contract, the iteration hand-off document, design invariants with reasons, and a lessons file with dated corrections.
+**What it contributed:** the loop protocol (macro = milestone, micro = deliverable, 5 attempts, 3-strike no-progress rule) and the L0 to L3 verifier ladder. Also the in-game AutoTest contract, the iteration hand-off document, design invariants with reasons, and a lessons file with dated corrections.
 
-## The micro-loop, as written in its CLAUDE.md
+## The Micro-Loop, As Written in Its CLAUDE.md
 
 > 1. **Define done.** Write the deliverable's checkable termination condition into its `STATE.md` entry before writing code: which verifier levels apply and which AutoTest IDs must pass. If you cannot write a check, the deliverable is not ready; rewrite it or escalate.
 > 2. **Research.** Look up every Verse API you intend to use in the project's generated digest files. […]
@@ -16,7 +16,7 @@
 
 Generalized in `AGENTS.md` → Loop protocol.
 
-## A STATE.md deliverable entry
+## A STATE.md Deliverable Entry
 
 > #### I9-1. Fix and Flank: squad-wide fix
 > - Status: **done, pending PS5 check** (L1 clean; F10 desk-checked)
@@ -25,7 +25,7 @@ Generalized in `AGENTS.md` → Loop protocol.
 
 Note the honest status: "done, pending PS5 check", and "desk-checked", not "tested".
 
-## The AutoTest contract
+## The AutoTest Contract
 
 > ```
 > AUTOTEST: BEGIN build=<version> count=<n>
@@ -37,7 +37,7 @@ Note the honest status: "done, pending PS5 check", and "desk-checked", not "test
 
 It reached `AUTOTEST: END pass=104 fail=0` once the project moved to a machine where the game client could run. Generalized in `docs/playbook/VERIFICATION.md`.
 
-## The iteration hand-off ("Build Plan vN")
+## The Iteration Hand-Off ("Build Plan VN")
 
 > **Every iteration ends with a new Google Doc, "Battle Drill Build Plan vN".** Use the next number, and never edit an older version […]
 > 1. **Where things stand.** The conclusion first: what is ready, what is blocked, what is waiting on Alonso.
@@ -58,21 +58,21 @@ And its honesty about verification:
 
 Generalized in `docs/ITERATION_PLAN.md`.
 
-## Design invariants with reasons
+## Design Invariants with Reasons
 
 > - **No chests, anywhere, ever.** Players get gear from a loadout at mission start and from drops off eliminated enemies.
 > - The wrong approach must visibly fail and the right one must visibly work. If a frontal rush succeeds, the mission is broken.
 > - **No menus after launch.** […] On-screen UI is passive only […]. The reason is immersion. Added by Alonso on 2026-10-10.
 
-## A lesson with a correction
+## A Lesson with a Correction
 
-> - **Rule:** Don't try to run Fortnite, UEFN play sessions, AutoTest (L2) or the memory calculation on a virtual machine. Easy Anti-Cheat refuses with "Cannot run under Virtual Machine." […]
+> - **Rule:** Do not try to run Fortnite, UEFN play sessions, AutoTest (L2) or the memory calculation on a virtual machine. Easy Anti-Cheat refuses with "Cannot run under Virtual Machine." […]
 >   **Because:** 2026-10-09: repairs, reinstalls and reboots all failed. […]
 >   **Correction (2026-10-13):** not every VM is refused. The QXL/KVM VM was; an **AWS EC2 g6f.2xlarge** (NVIDIA L4 vGPU) runs the client under Easy Anti-Cheat, and L2 works there. […] test with one `StartSession` rather than assuming.
 
 The lesson stays, corrected, so nobody repeats either mistake.
 
-## A dead end, recorded so nobody retries it
+## A Dead End, Recorded So Nobody Retries It
 
 > ### F1. Verse device references cannot be wired through MCP — **dead end**
 > - **Tried:** `DeviceToolset.SetDeviceProperty` and `ObjectTools.set_properties` […]
@@ -84,4 +84,4 @@ A later spike found Verse tags *could* be assigned, and the rule moved to "disco
 ## What to avoid (learned here)
 
 - `STATE.md` grew to about 100 KB of iteration narrative. Every session paid to read it. The seed now collapses closed milestones and warns on size.
-- Several resume blocks stacked up ("Earlier resume block …"). Keep one **Resume here**; move history down.
+- Several resume blocks stacked up ("Earlier resume block …"). Keep one **Resume Here**; move history down.

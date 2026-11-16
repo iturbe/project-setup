@@ -1,4 +1,4 @@
-# Automation matrix
+# Automation Matrix
 
 For each kind of task: does the agent do it alone, alone with a read-back or human check, or does the owner do it from a checklist? Written in M0, approved by the owner, and kept current.
 
@@ -11,7 +11,7 @@ For each kind of task: does the agent do it alone, alone with a read-back or hum
 
 | Task | Verdict | Tool or route | Check | Notes |
 |---|---|---|---|---|
-| Edit source code | agent | file tools | L0–L2 | |
+| Edit source code | agent | file tools | L0 to L2 | |
 | Build or compile | agent | `scripts/verify.sh` | exit code | |
 | Run unit tests | agent | `scripts/verify.sh` | exit code | |
 | Run on the target device or session | {{…}} | {{…}} | {{…}} | |
@@ -23,6 +23,6 @@ For each kind of task: does the agent do it alone, alone with a read-back or hum
 | Paid API calls | agent + check | {{…}} | cost estimate shown first | within the monthly cap |
 | Judge feel, look, fun | owner | queue item | | |
 
-## Tool inventory
+## Tool Inventory
 
 {{List the tools the agent actually has on this project (CLIs, MCP servers, connectors), with versions and the date listed.}}

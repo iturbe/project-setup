@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}}: project spec
+# {{PROJECT_NAME}}: Project Spec
 
 The authoritative description of what this is and how it is built. **Update it in the same micro-loop as any change to behavior or architecture.** If the code and this file disagree, one of them is a bug.
 
@@ -6,9 +6,9 @@ The authoritative description of what this is and how it is built. **Update it i
 
 {{Two or three paragraphs: the product, the user, the core loop or core job, and what the current version must prove.}}
 
-**Out of scope for now:** {{what this deliberately doesn't do yet, so nobody builds it by accident}}.
+**Out of scope for now:** {{what this deliberately does not do yet, so nobody builds it by accident}}.
 
-## 2. Design invariants
+## 2. Design Invariants
 
 Rules that hold for every feature. Each one says why. Changing one is the owner's decision, logged in `STATE.md`. Mirror the short form in `AGENTS.md` → Project-specific rules.
 
@@ -28,7 +28,7 @@ Rules that hold for every feature. Each one says why. Changing one is the owner'
                     └──────────────────────────────┘
 ```
 
-- **Core:** {{module or folder}}. Plain values in, plain values out. No imports from the UI or platform.
+- **Core:** {{module or folder}}. It takes plain values in and returns plain values, with no imports from the UI or platform.
 - **Adapters:** {{modules}}. Translate only. No rules in here.
 - **Providers:** {{external services}}, each behind one interface in {{folder}}. No vendor SDK outside that folder.
 - **Persistence:** {{where state lives; whether plain files are the source of truth}}.
@@ -58,6 +58,6 @@ Stable, unique, prefixed by area (`CORE01-…`, `UI03-…`). The list lives here
 |---|---|
 | {{CORE}} | {{core rules}} |
 
-## 7. Known gaps
+## 7. Known Gaps
 
 {{What is missing or wrong today, with the deliverable that fixes it.}}

@@ -1,4 +1,4 @@
-# Open questions
+# Open Questions
 
 Direction questions whose answers reshape the roadmap. Each question says **what it changes**. The owner answers here, in chat, or both; the agent records every answer in the table at the end. **Never ask an answered question again.**
 

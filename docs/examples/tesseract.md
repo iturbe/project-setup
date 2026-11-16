@@ -2,9 +2,9 @@
 
 *A SwiftUI iOS app (iPhone and iPad) for Ultimate Tic-Tac-Toe, with no external dependencies. Built milestone by milestone from MVP to an App Store launch, then AI opponents, themes, Game Center and a "Pro" unlock.*
 
-**What it contributed:** a CLAUDE.md that maps the general loop playbook onto one repo, an exact pinned verifier, a toolchain pre-flight that asks the owner for sudo, milestones with "Human-verified" lists, the always-visible dev version, and a pivot handled as a confirmed decision record.
+**What it contributed:** a CLAUDE.md that maps the general loop playbook onto one repo, an exact pinned verifier, and a toolchain pre-flight that asks the owner for sudo. Also milestones with "Human-verified" lists, the always-visible dev version, and a pivot handled as a confirmed decision record.
 
-## The verifier, pinned
+## The Verifier, Pinned
 
 > ```sh
 > xcodebuild -project TesseractV2.xcodeproj -scheme TesseractV2 \
@@ -17,13 +17,13 @@
 >
 > The `OS=18.6` pin matters: without it xcodebuild requests `OS:latest`, and the iPhone 16 simulator on this machine only exists under the iOS 18.6 runtime […].
 
-## Pre-flight that respects hard stops
+## Pre-Flight That Respects Hard Stops
 
-> **Pre-flight, once per session:** confirm `xcode-select -p` points at the full Xcode app, not the Command Line Tools […]. If it doesn't, stop and ask the user to run the `sudo xcode-select -s` command themselves — don't try to work around it.
+> **Pre-flight, once per session:** confirm `xcode-select -p` points at the full Xcode app, not the Command Line Tools […]. If it does not, stop and ask the user to run the `sudo xcode-select -s` command themselves — do not try to work around it.
 
-## A milestone with automated and human verification
+## A Milestone with Automated and Human Verification
 
-> ## MVP — "Correct, complete, and doesn't lose your stuff"
+> ## MVP — "Correct, complete, and does not lose your stuff"
 > […]
 > **Exit criteria:** a friend can play a full game, background the app mid-game, come back, finish, and see a proper ending — with no state lost and no dead settings.
 >
@@ -36,25 +36,25 @@
 
 Template: `ROADMAP.md`.
 
-## The dev version
+## The Dev Version
 
 > every code change, however small, must bump the patch digit of `BuildInfo.devVersion` […] It exists purely so the user can always tell exactly which build is on a given device when reporting a bug, especially across two devices during multi-device testing (Game Center matches, etc.). `HomeView` shows it persistently […].
 
-## The architecture rule
+## The Architecture Rule
 
 > MVVM with a strict layering rule: **all game logic lives in plain value types (structs/enums) under `TesseractV2/Models/` with no SwiftUI imports**; SwiftUI observation happens only at the view-model layer. Keep new game logic in the value-type core so it stays unit-testable without UI.
 
 By v4 the suite had 204 tests.
 
-## A pivot as a decision record (`post_v2_revision.md`)
+## A Pivot As a Decision Record (`post_v2_revision.md`)
 
 > *Written 2026-08-08 […]. Confirmed with the user the same day. This is a planning/decision record — **nothing in this document has been implemented yet**. It supersedes the "sell 4 theme packs + the editor separately" monetization model […].*
 
 It also corrected an assumption before anyone acted on it:
 
-> **Correction to one assumption:** signing into the *same* Apple ID on two devices won't meaningfully test the async match feature. […] **Two distinct Game Center identities are needed.**
+> **Correction to one assumption:** signing into the *same* Apple ID on two devices will not meaningfully test the async match feature. […] **Two distinct Game Center identities are needed.**
 
-## Concurrent sessions
+## Concurrent Sessions
 
 > **2026-08-20 — Concurrent-session file changes handled by re-reading fresh, not by coordinating/locking.** […] Cost: several wasted `xcodebuild test` invocations that failed at the simulator-launch level from resource contention, not real failures — worth knowing the difference before assuming a break.
 

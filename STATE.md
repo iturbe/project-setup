@@ -1,12 +1,12 @@
-# STATE.md: loop log
+# STATE.md: Loop Log
 
-Where things stand. A fresh session reads **Resume here** and the current milestone block, and can continue with no chat history. Newest milestone block at the top. If a decision changes, add a new entry; never edit an old one.
+Where things stand. A fresh session reads **Resume Here** and the current milestone block, and can continue with no chat history. Newest milestone block at the top. If a decision changes, add a new entry; never edit an old one.
 
 **Keep it navigable.** When a milestone closes, collapse its deliverable entries into a 3–5 line summary under **Milestone history**. Move long narratives to `docs/` (for example `docs/runs/<date>-<topic>.md`) and link them. `scripts/check_docs.sh` warns when this file grows past 60 KB.
 
 ---
 
-## Resume here (updated {{DATE}}; build 0.0.0)
+## Resume Here (Updated {{DATE}}; Build 0.0.0)
 
 - **Now:** the project was created from the seed. Next: `/kickoff`.
 - **Next action:** {{one concrete action, with the exact command if there is one}}
@@ -15,7 +15,7 @@ Where things stand. A fresh session reads **Resume here** and the current milest
 
 ---
 
-## Current milestone: M0: Toolchain and walking skeleton
+## Current Milestone: M0: Toolchain and Walking Skeleton
 
 **Status:** not started
 **Exit criteria:** see `ROADMAP.md` → M0.
@@ -35,15 +35,15 @@ Where things stand. A fresh session reads **Resume here** and the current milest
 
 ---
 
-## Decisions log
+## Decisions Log
 
 Dated. One line for what, one for why. Never edit an old entry; reverse a decision with a new one.
 
-- **{{DATE}} · Seed** — Project created from `iturbe/project-setup`. **Why:** a common starting point for agentic development.
+- **{{DATE}} · Seed.** Project created from `iturbe/project-setup`. **Why:** a common starting point for agentic development.
 
 ---
 
-## Dead ends
+## Dead Ends
 
 Approaches that failed for a reason that will still be true next session. Record platform reasons in `docs/PLATFORM_CONSTRAINTS.md` too, so no later session retries them.
 
@@ -51,7 +51,7 @@ Approaches that failed for a reason that will still be true next session. Record
 
 ---
 
-## Milestone history
+## Milestone History
 
 Closed milestones, 3–5 lines each: what shipped, the final build, what was carried forward.
 

@@ -4,7 +4,7 @@ The machines this project runs on, the tools on them, and what a new machine mus
 
 ## Machines
 
-| Name | What it is | Runs | Doesn't run | Repo path |
+| Name | What it is | Runs | Does not run | Repo path |
 |---|---|---|---|---|
 | {{e.g. MacBook Air}} | {{OS, CPU, RAM}} | {{build, tests, simulator}} | {{e.g. the game client}} | {{path}} |
 
@@ -17,7 +17,7 @@ The machines this project runs on, the tools on them, and what a new machine mus
 | {{SDK/editor}} | | | |
 | Claude Code | | | |
 
-## Pre-flight (every session)
+## Pre-Flight (Every Session)
 
 The checks in `AGENTS.md` → Session start ritual, step 5, spelled out:
 
@@ -26,7 +26,7 @@ git status --short                 # clean, or explained by STATE.md
 {{toolchain check, e.g. xcode-select -p, uv --version, node --version}}
 ```
 
-## New machine checklist
+## New Machine Checklist
 
 1. Clone with `git clone` (and `git lfs install` first if the repo uses LFS). Never copy a project through a vendor tool's own sync.
 2. Set the git identity: `git config user.email <github-no-reply-address>`.
@@ -36,6 +36,6 @@ git status --short                 # clean, or explained by STATE.md
 6. {{Any project-specific step: editor settings, MCP servers, signing}}.
 7. If Claude memory notes were exported to `docs/claude-memory/`, copy them into Claude Code's memory folder for this project on the new machine.
 
-## Switching machines
+## Switching Machines
 
-Before leaving: commit, push, and update `STATE.md` → Resume here with the machine you are leaving. On arrival: pull, run the pre-flight, run `scripts/verify.sh`.
+Before leaving: commit, push, and update `STATE.md` → Resume Here with the machine you are leaving. On arrival: pull, run the pre-flight, run `scripts/verify.sh`.
